@@ -1,0 +1,16 @@
+name: ping-repl
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: "npm i"
+      - run: "node ."
+        env: 
+            URL: ${{ secrets.URL }}
